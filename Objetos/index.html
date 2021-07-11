@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos JS</title>
+</head>
+<body>
+    <script>
+
+        //OBJETO DECLARATIVO O LITERAL
+        let coche = {
+            marca: 'Ferrari',
+            añoFabricacion: 2021,
+            saludar: () => console.log(`Tienes un ${coche.marca} fabricado el año ${coche.añoFabricacion}`)
+        } 
+        coche.saludar()
+
+        //OBJETO CONSTRUIDO (ES UN SETTER BASICAMENTE)
+        function Persona(nombre, edad){
+            this.nombre = nombre
+            this.edad = edad
+            this.saludo = function(){
+                console.log(`Te llamas ${nombre} y tienes ${edad} años`)
+            }
+        }
+
+        let myself = new Persona('Sergio',28)
+        myself.saludo()
+
+        //EMPLEANDO NEW OBJECT
+
+        let myDreamCar = new Object({
+            marca: 'Tesla',
+            añoFabricacion: 2020,
+            saludar: () => console.log(`Tienes un ${myDreamCar.marca} fabricado el año ${myDreamCar.añoFabricacion}`)
+        })
+
+        myDreamCar.saludar()
+
+    </script>
+</body>
+</html>

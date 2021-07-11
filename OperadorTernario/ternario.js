@@ -1,0 +1,7 @@
+const GASTO = 100
+const PRESUPUESTO = 200
+const RESULTADO = PRESUPUESTO > GASTO
+    ? 'PUEDES'
+    : 'NO PUEDES'
+
+console.log(RESULTADO)
