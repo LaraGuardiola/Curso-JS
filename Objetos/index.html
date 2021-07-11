@@ -33,10 +33,16 @@
         let myDreamCar = new Object({
             marca: 'Tesla',
             añoFabricacion: 2020,
-            saludar: () => console.log(`Tienes un ${myDreamCar.marca} fabricado el año ${myDreamCar.añoFabricacion}`)
+            saludar: () => console.log(`Tienes un ${myDreamCar.marca} fabricado el año ${myDreamCar.añoFabricacion}`),
+            aumentarAñoFab: function(){
+                this.añoFabricacion +=1
+            }
         })
 
         myDreamCar.saludar()
+        myDreamCar.aumentarAñoFab()
+        myDreamCar.saludar()
+
 
     </script>
 </body>

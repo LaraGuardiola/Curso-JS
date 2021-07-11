@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #parrafo3{
+            color: red;
+        }
+    </style>
+    <title>DOM</title>
+</head>
+<body>
+    <p id="parrafo">parrafo</p>
+    <p id="parrafo2">parrafo 2</p>
+    <p>parrafo 3</p>
+    <script>
+
+        //selectores, el basico a emplear es querySelector() que busca la primera ocurrencia con el selector selccionado (trabajar siempre con id en este caso)
+
+        document.querySelector("#parrafo").innerHTML = 'parrafo cambiado'
+        console.log(document.getElementsByTagName('p')[1].innerHTML) //byTagName saca los elementos del dom con el selector seleccionado como una array. luego es cuestion de acceder a sus propiedades
+        let parrafo3 = document.getElementsByTagName('p')[2]
+        parrafo3.id = 'parrafo3'
+        parrafo3.style.backgroundColor = 'blue'
+    </script>
+    
+</body>
+</html>

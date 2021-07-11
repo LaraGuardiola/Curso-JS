@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creant nodes</title>
+</head>
+<body>
+    <input type="text" id="todo_adder">
+    <button id="agregar_tarea">Agregar tarea</button>
+
+    <ul id="todo_list">
+
+    </ul>
+    <script>
+        let todoList = document.querySelector('#todo_list')
+        let inputText = document.querySelector('#todo_adder')
+        let boton = document.querySelector('#agregar_tarea')
+        let tareas = ["Levantarse","Existir","Dormir"]
+
+        for(i=0; i < tareas.length; i++){            //itero la array asignando valores y creando los li con correspondiente texto, despues los añado al DOM
+            let tarea = tareas[i]
+            let li = document.createElement('li')
+            li.textContent = tarea
+            li.id = 'todo_' + i
+            todoList.appendChild(li)
+        }
+
+        setTimeout(function() { //por probar un setTimeout de 10s
+            let liAEliminar = document.querySelector('#todo_2')
+            todoList.removeChild(liAEliminar)
+        },10000)
+
+        //combinado con el ejercicio de eventos (toma el valor del input text y lo añade en una nueva etiqueta li que añade a ul)
+
+        boton.addEventListener('click', () => {
+            let inputValue = inputText.value
+            let li = document.createElement('li')
+            li.textContent = inputValue
+            todoList.appendChild(li)
+        })
+
+
+
+    </script>
+</body>
+</html>
