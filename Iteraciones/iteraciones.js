@@ -56,3 +56,4 @@ function parOImpar(elementoArray){
 let arrayPares = array.filter(pares)
 console.log(arrayPares)
 console.log(array.filter(parOImpar(false))) //filter siempre pide una funcion, en este caso enviando un bool como parametros podemos escoger el camino logico a si queremos pares o impares
+

@@ -21,4 +21,3 @@ console.log(ivysaur.power)
 console.log(ivysaur.type)
 ivysaur.drinks()
 
-//Un console.log(ivysaur) en google dev tools mostraria el objeto ivysaur y todas sus herencias mostradas como __proto__

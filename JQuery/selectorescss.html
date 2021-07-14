@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectores CSS</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <h1>Inicio JQuery</h1>
+    <h2 id="h2">Subcabecera con atributo id</h2>
+    <h3 class="h3">Sub-subcabecera con class</h3>
+    <input type="text">
+    <p>p random 1</p>
+    <p>p random 2</p>
+    <p>p random 3</p>
+    <ul class="three-sons">
+        <li>li random 1</li>
+        <li>li random 2</li>
+        <li>li random 3</li>
+    </ul>
+    <script> 
+        $(function(){   
+
+            /*Lista de selectores CSS mas usados (todos los de CSS3 son validos)*/
+
+            // *   - Selecciona todos los elementos
+            
+            //$('*').hide() //probar en google dev tools con un snippet de jquery. esconderá todos los elementos del DOM
+
+            // etiqueta
+
+            $('h1').hide() //oculto las etiquetas h1
+
+            // #id
+
+            $('h2#h2').text('El texto ha sido cambiado con jquery') //selector tag h2 con id h2
+
+            // .clase
+
+            $('h3.h3').css({ 'color': 'red', 'font-size': '150%' })
+
+            // elemento1 elemento2 - multiples
+
+            $('h1,h2,h3').css({'margin': '3em', 'font-family': 'Hack'})
+
+            // seleccionando atributos
+
+            $("input[type='text']").on('click', () => {       //clicando en el input hace desaparecer el input text con efecto fadeout en 100 ms y y lo hace reaparecer en 5s con efecto fade in
+                $("input[type='text']").fadeOut( 100 );
+                $("input[type='text']").fadeIn( 5000 );
+            })  //esto es basicamente un event listener
+
+            // Seleccionando un elemento en particular del dom mediante eq(indice) EJ: buscar p de una web y borrar uno en especifico
+
+            $('p').eq(1).hide() // Hay 3 p en el dom, siguiendo el orden logico y empezando por 0, 1 correspondera a la segunda p de esta web.
+            
+            // Empleando pseudoselectores
+
+            $('ul.three-sons li:last-child').hide() //esconde el ultimo hijo de ul.three-sons
+
+        })
+    </script>  
+</body>
+</html>

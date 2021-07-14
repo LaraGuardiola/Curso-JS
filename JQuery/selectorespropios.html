@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectores propios</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <form>
+        <input type="text">
+        <input type="password" placeholder="Contraseña">
+        <input type="submit">
+    </form>
+    <p>a</p>
+    <p>b</p>
+    <p>c</p>
+    <p>d</p>
+    <p>e</p>
+    <input type="submit">
+    <script>
+        // eq - especifica el indice del elemento a tratar
+
+        $('img').eq(0).hide() 
+
+        // has - Selecciona los elementos si contienen x elemento, en este caso si form tiene un input type password se ocultara el form
+
+        $("form").has("input[type='password']").hide()
+
+        // contains - Si contiene una determinada parte (puedes aplicar eq si hay mas de un elemento que contenga la string )
+
+        $("p:contains(a)").css('background-color', 'yellow')
+
+        // Even y Odd (par e impar)  
+
+        $("p:odd").hide() 
+
+        // gt y lt (greater than, less than)
+
+        $('p:gt(3)').hide() //hay 5 p, mayor que 3, siendo el indice maximo 4, ocultara el ultimo elemento p del DOM
+
+        // first y last (actualmente .first() y last())
+
+        $('p').first().css('color', 'red')
+
+        // inputs
+
+        $("input[type='submit']").css('background-color', 'yellow')
+
+        /* ***** MAS SELECTORES UTILES ***** */
+        // :button, :file, :radio, :reset
+        // :submit, :text, :button, :checkbox
+        // :password, :image
+        // :hidden, :visible
+        // :parent
+
+    </script>
+    
+</body>
+</html>
