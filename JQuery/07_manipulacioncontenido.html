@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de contenido con JQuery</title>
+    <script src="jquery.js"></script>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>2</td>
+            <td>2</td></tr>
+        <tr>
+            <td>7</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>10</td>
+            <td>6</td>
+            <td>1</td>
+        </tr>
+    </table>
+    <form>
+        <input type="text">
+        <input type="password">
+    </form>
+    <script>
+
+        //.empty() vacia el contenido del nodo
+
+        $('tbody tr:last-child td').last().empty() // del cuerpo de table, agarra el ultimo hijo de los tr y mediante last() obtengo el ultimo hijo de tr (td(4)) y lo vacío
+
+        // .html() - sustituye y/o establece el contenido html(incluso puedes incrustar mas html) o lo obtiene
+
+        $('tbody tr:nth-child(3) td').eq(2).html('what')
+
+        let contenido = $('tbody tr:nth-child(3) td').eq(1).html()
+        console.log(contenido) //OUTPUT 10
+
+        //.text() literalmente hace lo mismo que html solo que siempre devuelve cadenas, obviando las etiquetas HTML
+
+        //.append() / .prepend() / .appendTo() / .prependTo() - 
+
+        $('tbody').append("<tr><td>8</td><td>10</td><td>4</td><td>3</td></tr>") //añade un tr con sus td al FINAL de table (lo anexiona)
+        $('tbody').prepend("<tr><td>1</td><td>9</td><td>4</td><td>7</td></tr>") //añade un tr con sus td al PRINCIPIO de table (lo anexiona)
+
+        $('<tr><td>6</td><td>7</td><td>8</td><td>9</td></tr>').appendTo('tbody')  //literalmente a la inversa (nodos a anexionar)en(nodo padre)
+        $('<tr><td>9</td><td>8</td><td>7</td><td>6</td></tr>').prependTo('tbody')
+
+        //.wrap() / .unwrap() /.wrapAll() / .wrapInner() - wrap añade estructura alrededor de los elementos seleccionados (se vuelve su daddy)
+
+        $('tbody').wrap('<section></section') //envuelve tbody en una section 
+        $('tbody').unwrap()                     //retira la section padre
+        $('tbody').wrapInner('<section></section') //tbody pasa a ser hijo (queda envuelto por dentro)
+        $('tbody').wrapAll('<section></section')
+
+        //.val() afecta a los input
+
+       / $("input").val('Don Ramon')
+        let valorInputText = $("input[type='text']").eq(0).val() //obtengo su valor
+        console.log(valorInputText)
+       $('input').each(function(index){         //selecciono los input y por cada uno de ellos se ejecuta una funcion que selecciona el mismo input(que va a ir iterando) el cual llama a otra funcion que acaba retornando el valor actual del input mas uno nuevo añadido
+           $(this).val(function(index,valor){
+               return valor + ' es el amo'
+           })
+       })
+
+    </script>
+</body>
+</html>

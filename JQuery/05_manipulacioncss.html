@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de CSS con JQuery</title>
+    <script src="jquery.js"></script>
+    <style>
+        .elemento{
+            color: #FF5733
+        }
+    </style>
+</head>
+<body>
+    <ul class="lista">
+        <li class="elemento">Primer elemento de la lista</li>
+        <li class="elemento">Segundo elemento de la lista</li>
+        <li class="elemento">Tercer elemento de la lista</li>
+    </ul>
+    <script>
+        $(function(){
+            //tomando propiedades css y asignandolas a variables
+
+            let coloresLi = $('li.elemento').css(['color','background-color']) 
+            console.log(coloresLi) //colores en consola de los elementos con la clase elemento
+        })
+
+        // tambien se puede trabajar directamente en propiedades como width y height
+
+        let setWidthLi1 = $('li.elemento').eq(0).width('20px')
+        let obtenerAnchuraLi2 = $('li.elemento').eq(1).width()
+        console.log(obtenerAnchuraLi2)
+    </script>
+    
+</body>
+</html>

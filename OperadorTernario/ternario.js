@@ -1,7 +1,7 @@
 const GASTO = 100
 const PRESUPUESTO = 200
 const RESULTADO = PRESUPUESTO > GASTO
-    ? 'PUEDES'
-    : 'NO PUEDES'
+    ? console.log('PUEDES')
+    : console.log('no PUEDES')
 
-console.log(RESULTADO)
+//los ternarios saltan solos :/

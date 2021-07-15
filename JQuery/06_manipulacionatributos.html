@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de atributos con JQuery</title>
+    <script src="jquery.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="li-ul" value="1">1</li>
+        <li class="li-ul" value="2">2</li>
+        <li class="li-ul" value="3">3</li>
+    </ul>
+    <a>Go to blank page</a>
+    <script>
+        $(function(){
+            
+            //attr('atributo','valor') o attr('atributo') y prop('atributo','valor')
+
+            let cambioSetAtributo = $('li.li-ul').attr('value','todos iguales') //cambia atributo value a 'todos iguales' - check in dev tools
+            let obtenerAtributo = $('li.li-ul').attr('value')
+            console.log(obtenerAtributo)
+            //let cambioRemoveAtributo = $('li.li-ul').removeAttr('value')        //quita el atributo value 
+
+            //prop() y removeProp()- obtiene y establece propiedades
+            let setAtribute = $('a').prop('href','_blank')
+        })
+       
+    </script>
+</body>
+</html>

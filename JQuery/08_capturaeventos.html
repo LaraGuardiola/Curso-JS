@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuchando eventos con JQuery</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        $(() =>{
+            //Captura de eventos
+
+            let contador = 0;
+
+            //Por asociacion directa (afectara al nodo deseado y a sus padres)
+            $('li').on('mouseenter click',function(event){
+                $(this).html(`Has entrado ${++contador} veces`)
+            })
+
+            //Por asociación delegada ( de ul > li)
+
+            $('ul').on('mouseenter','li',function(event){
+                $(this).css('color',`rgb(${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)})`)
+            })
+
+            //main events como click, mouseenter, mouseout, focus, etc / solo admite asociacion directa
+
+            $('li').click(function(event){
+                $(this).css('background-color',`rgb(${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)})`)
+            })
+
+            /*LISTA DE EVENTOS CON "NOMBRE"
+
+            .change()
+            .click()
+            .dbclick()
+            .hover()
+            .submit()
+            .scroll()
+            .resize()
+            .hover()
+            .focus()
+            .focusout()
+            .keypress()
+            .keydown()
+            .keyup()
+            .mouseenter()
+            .mouseleave()
+            .mousemove()
+            .mouseout()
+            .mouseover()
+            .select()*/
+
+            //tener en cuenta ademas los métodos del objeto Event como target (recoge el mismo evento) pageX(coordenadas), etc
+        })
+    </script>
+    
+</body>
+</html>

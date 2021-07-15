@@ -2,11 +2,11 @@
 
 
 //!NO ME FUNCIONA  :net ERR_FAILED
-/*fetch('https://api.chucknorris.io/jokes/random')
+fetch('https://api.chucknorris.io/jokes/random')
     .then((respuesta) => respuesta.json())
     .then(function(datos){
         console.table(datos)
-})*/
+})
 
 /*// Create a request variable and assign a new XMLHttpRequest object to it.
 var request = new XMLHttpRequest()
@@ -77,5 +77,5 @@ var request = http.get(url, function (response) {
 
         // extract the distance and time
         console.log(data.value);
-    }); 
-}); 
+    })
+})

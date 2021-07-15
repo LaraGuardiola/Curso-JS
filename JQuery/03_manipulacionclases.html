@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de clases con JQuery</title>
+    <script src="jquery.js"></script>
+    <style>
+        .lista{
+            color: blueviolet;
+            list-style-type: none;
+            font-family: 'Hack';
+        }
+
+        .listav2{
+            font-size: 40px;
+        }
+
+        .li-0,.li-1,.li-2{
+            margin: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Primer elemento de la lista</li>
+        <li>Segundo elemento de la lista</li>
+        <li>Tercer elemento de la lista</li>
+    </ul>
+    <script>
+        //funciones de manipulacion de clases CSS 
+
+        //addClass() $(selector).addClass(clase1 clase2 clase3) o se añade una funcion que devuelva una clase ej: addClass(function(index){return "nombreDeClase"})
+
+        let ul = $('ul').addClass('lista listav2')
+        let li = $('ul.lista > li').addClass(function(index){       //itera sobre los elementos de ul y les otorga un nombre a su clase
+            return "li-" + index    
+        })
+
+        //removeClass() - misma sintaxis que addClass
+
+        ul.removeClass('listav2') //retiro la font-size de 40 de la clase listav2
+
+        //toggleClass() - Activa y desactiva las clases (en base a un true or false) . Como estaba desactivado en la linea anterior vuelve a activar la clase listav2
+
+        ul.toggleClass('listav2',true)
+
+        //hasClass() - devuelve un booleando true or false en funcion si tiene o no una clase
+
+        if(ul.hasClass('listav2')){
+            console.log('Tiene la clase listav2 porque la he toogleado previamente')
+        }
+    </script>
+</body>
+</html>
