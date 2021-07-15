@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando el DOM con JQuery</title>
+    <script src="jquery.js"></script>
+    <style type="text/css">
+        *{
+            margin: 2rem;
+            padding: 1rem;
+            box-sizing: border-box;
+            font-family: 'Hack';
+        }
+        table, td, th {
+            border: 2px solid black !important ;
+        }
+        table {
+            width: 90%;
+            table-layout:fixed;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Examen 1</th>
+            <th>Examen 2</th>
+            <th>Examen 3</th>
+            <th>Nota Final</th>
+        <tr class="notas">
+            <td>5</td>
+            <td>7</td>
+            <td>8</td>
+            <td class="column"></td>
+        </tr>
+        <tr class="notas">
+            <td>5</td>
+            <td>1</td>
+            <td>6</td>
+            <td class="column"></td>
+        </tr>
+        <tr class="notas">
+            <td>4</td>
+            <td>2</td>
+            <td>5</td>
+            <td class="column"></td>
+        </tr>
+    </table>
+    <button id="btn">Añade columna</button>    
+    <script>
+        // OBJETIVOS: CONSEGUIR LA SUMA FINAL Y COLOREAR SEGUN APROBADO O SUSPENSO MEDIANTE UN CLICK EN EL CAMPO VACIO DE LA TABLA
+                    //CREAR EFECTO HOVER QUE TAMBIEN SE COLOREE SEGUN LA NOTA
+                    //BOTON QUE CREE UNA FILA CON NUMEROS AL AZAR (0 A 10) Y LA ANEXIONE A LA TABLA
+
+        $(function(){
+
+            function addRow(){
+                let tableBody = $("table tbody")
+                tableBody.append(`<tr class="notas"><td>${Math.round(Math.random() * 10)}</td><td>${Math.round(Math.random() * 10)}</td><td>${Math.round(Math.random() * 10)}</td><td class="column"></td></tr>`)
+            }
+
+            document.querySelector('#btn').addEventListener('click', addRow)
+
+            $('.notas').each(function(index){ 
+
+                let nota1 = $(this).children().eq(0).text()  
+
+                let nota2 = $(this).children().eq(1).text()  
+
+                let nota3 = $(this).children().eq(2).text()
+
+                let total = (parseFloat(nota1) + parseFloat(nota2) + parseFloat(nota3)) / 3
+
+                $(this).children('.column').text(total.toFixed(2))
+
+                let pasaElCorte = (total < 5) 
+                    ? $(this).children('.column').css('color','red') 
+                    && $(this).hover(function(){
+                        $(this).css('background-color','#FF5733')
+                    })
+                    .mouseout(function(){
+                        $(this).removeAttr('style')
+                    })
+                    
+                    : $(this).children('.column').css('color','green') 
+                    && $(this).hover(function(){
+                        $(this).css('background-color','#75F879')
+                    })
+                    .mouseout(function(){
+                        $(this).removeAttr('style')
+                    })
+            })
+            function refresh() {
+                window.location.reload();
+            }
+           /* window.setInterval(refresh(), 10000); 	
+            // Call a function every 10000 milliseconds 
+            // (OR 10 seconds).
+
+            // Refresh or reload page.
+            function refresh() {
+                window.location.reload();
+            }*/
+        })
+    </script>
+</body>
+</html>

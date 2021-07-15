@@ -35,6 +35,10 @@
                 $(this).css('background-color',`rgb(${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)})`)
             })
 
+            //tambien se pueden apagar los handlers
+
+            $('li').off('click')
+
             /*LISTA DE EVENTOS CON "NOMBRE"
 
             .change()
