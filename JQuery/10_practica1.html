@@ -29,11 +29,11 @@
             padding:0;
             position: absolute;
             flex-wrap: wrap;
-            width: 90%;
+            width: 60%;
         }
         .barras{
             position: relative;
-            top: 33px;
+            top: -33px;
             width: 30px;
             border: 1px solid black;
         }
@@ -78,8 +78,28 @@
                     //TESTEAR ALGUNA ANIMACION CON ANIMATE() Y SUS PROPIEDADES - DONE
 
         $(function(){
+            /*function cambiarColor(){
+                $('body').css('background-color',`rgb(${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)})`)
+            }
+
+            function pollFunc(fn, timeout, interval) {
+                var startTime = (new Date()).getTime();
+                interval = interval || 1000;
+
+                (function p() {
+                    fn();
+                    if (((new Date).getTime() - startTime ) <= timeout)  {
+                    setTimeout(p, interval);
+                    }
+                })();
+            }   
+
+            pollFunc(cambiarColor, 300000, 500);
+            
+            */  //el codigo en comentario ejecuta la funcion cambiar color durante 300000 milisegundos cada 500 milisegundos
 
             let btn = $('#btn')
+            btn.on('click', addRow)
 
             $('th').animate({
                 fontSize: '3rem',
@@ -93,8 +113,6 @@
                 }
             })
 
-            btn.on('click', addRow)
-                
             transformRows()
             
             function addRow(){
@@ -102,7 +120,8 @@
                 
                 tableBody.append(`<tr class="notas"><td>${Math.round(Math.random() * 10)}</td><td>${Math.round(Math.random() * 10)}</td><td>${Math.round(Math.random() * 10)}</td><td class="column"></td></tr>`)
                 transformRows()
-                createGraphic() 
+                createGraphic()
+                animateBars()
             }
 
             function createGraphic(){
@@ -113,6 +132,15 @@
                     console.log(final)
                 })
             }
+
+            function animateBars(){
+                let altura = $('.notas:last > td').eq(3).text()
+                console.log('la altura es' + altura)
+                $('.barras:last').animate({
+                    height: `${(altura * 25)}px`
+                })
+            }
+
 
             function transformRows(){
                 $('.notas').each(function(index){ 
@@ -144,7 +172,10 @@
                 })
                 
             })
-        }
+            
+            
+            
+            }
         })
     </script>
 </body>
