@@ -20,6 +20,23 @@
             table-layout:fixed;
             border-collapse: collapse;
         }
+
+        .grafico{
+            border-bottom: 3px solid black;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+            padding:0;
+            position: absolute;
+            flex-wrap: wrap;
+            width: 90%;
+        }
+        .barras{
+            position: relative;
+            top: 33px;
+            width: 30px;
+            border: 1px solid black;
+        }
     </style>
 </head>
 <body>
@@ -48,22 +65,57 @@
             <td class="column"></td>
         </tr>
     </table>
-    <button id="btn">Añade columna</button>    
+    
+    <button id="btn">Añade columna</button>  
+    
+    <div class="grafico">
+    </div>
     <script>
-        // OBJETIVOS: CONSEGUIR LA SUMA FINAL Y COLOREAR SEGUN APROBADO O SUSPENSO MEDIANTE UN CLICK EN EL CAMPO VACIO DE LA TABLA
-                    //CREAR EFECTO HOVER QUE TAMBIEN SE COLOREE SEGUN LA NOTA
-                    //BOTON QUE CREE UNA FILA CON NUMEROS AL AZAR (0 A 10) Y LA ANEXIONE A LA TABLA
+        // OBJETIVOS: CONSEGUIR LA SUMA FINAL Y COLOREAR SEGUN APROBADO O SUSPENSO MEDIANTE UN CLICK EN EL CAMPO VACIO DE LA TABLA - DONE
+                    //CREAR EFECTO HOVER QUE TAMBIEN SE COLOREE SEGUN LA NOTA - DONE
+                    //BOTON QUE CREE UNA FILA CON NUMEROS AL AZAR (0 A 10) Y LA ANEXIONE A LA TABLA - DONE
+                    //GRAFICO DE BARRAS EN FUNCION DE LA NOTA FINAL
+                    //TESTEAR ALGUNA ANIMACION CON ANIMATE() Y SUS PROPIEDADES - DONE
 
         $(function(){
 
+            let btn = $('#btn')
+
+            $('th').animate({
+                fontSize: '3rem',
+            },{
+                duration: 1000,
+                specialEasing: {
+                    fontSize: 'swing'
+                },
+                complete: function(){
+                    console.log("funciona")
+                }
+            })
+
+            btn.on('click', addRow)
+                
+            transformRows()
+            
             function addRow(){
                 let tableBody = $("table tbody")
+                
                 tableBody.append(`<tr class="notas"><td>${Math.round(Math.random() * 10)}</td><td>${Math.round(Math.random() * 10)}</td><td>${Math.round(Math.random() * 10)}</td><td class="column"></td></tr>`)
+                transformRows()
+                createGraphic() 
             }
 
-            document.querySelector('#btn').addEventListener('click', addRow)
+            function createGraphic(){
+                $('.grafico').append(`<div class='barras' style="background-color: rgb(${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)},${Math.round(Math.random() * 255)}"><div>`)
 
-            $('.notas').each(function(index){ 
+                $('tr > td').last().each(function(index){
+                    let final = $(this).text()
+                    console.log(final)
+                })
+            }
+
+            function transformRows(){
+                $('.notas').each(function(index){ 
 
                 let nota1 = $(this).children().eq(0).text()  
 
@@ -79,30 +131,20 @@
                     ? $(this).children('.column').css('color','red') 
                     && $(this).hover(function(){
                         $(this).css('background-color','#FF5733')
-                    })
-                    .mouseout(function(){
-                        $(this).removeAttr('style')
-                    })
-                    
+                })
+                .mouseout(function(){
+                    $(this).removeAttr('style')
+                })
                     : $(this).children('.column').css('color','green') 
                     && $(this).hover(function(){
                         $(this).css('background-color','#75F879')
-                    })
-                    .mouseout(function(){
-                        $(this).removeAttr('style')
-                    })
+                })
+                .mouseout(function(){
+                    $(this).removeAttr('style')
+                })
+                
             })
-            function refresh() {
-                window.location.reload();
-            }
-           /* window.setInterval(refresh(), 10000); 	
-            // Call a function every 10000 milliseconds 
-            // (OR 10 seconds).
-
-            // Refresh or reload page.
-            function refresh() {
-                window.location.reload();
-            }*/
+        }
         })
     </script>
 </body>

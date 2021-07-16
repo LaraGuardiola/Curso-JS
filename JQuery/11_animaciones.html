@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaciones con JQuery</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <script>
+        /*Tipos de efectos
+        Podemos ver la clasificación de los mismos en la siguiente tabla:
+
+    */
+        //La cola de efectos (o animaciones)
+        //Para tener un control de los efectos y animaciones debemos de tener cierto control de la cola de efectos ( y animaciones) ya que si le aplico varios efectos y animaciones a un mismo elemento a la vez estas se van colocando en una cola y cuando finaliza una de ellas, se pasa a las siguientes.
+
+        //jQuery tiene funciones para controlar esta cola.
+
+        //.stop(): Finaliza la aplicación el efecto o animación en curso en los elementos seleccionados.
+        //.finish(): Finaliza la aplicación el efecto o animación en curso y elimina las que están esperando en cola finalizándolas (en los elementos seleccionados).
+        //.queue(‘fx’): Obtiene información de la cola de efectos y animaciones (en los elementos seleccionados).
+        //.clearQueue(): Elimina de la cola todos los efectos o animaciones pendientes (en los elementos seleccionados).
+        //.delay(): Establece un retraso para la ejecución de los restantes elementos de la cola de efectos y animaciones (en los elementos seleccionados).
+
+        /* PROPIEDADES ANIMABLES CON JQUERY
+
+        //WIDTH/HEIGHT
+        //top/left/right/bottom
+        //opacity
+        //borderWith/borderXwidth
+        //padding/margin
+        //fontSize
+        //lineHeight
+
+        //aplicable con funcion animate mediante incrementos o decrementos en las propiedades (ej propiedad +=1). tambien es posible emplear hide() y show() (mostrar u ocultar propiedades)
+
+        $(function(){
+            $(selector).animate({
+                prop1: valor1, 
+                prop2: valor2,
+                propn: valorn
+            })
+        })
+
+        /*$('tr').animate({
+                width: '-=500',
+                height: '+=200'
+            })*/
+
+        /* NO ANIMABLES
+        //color
+        //background-color
+        //display
+        //float
+        */
+    </script>
+    
+</body>
+</html>
